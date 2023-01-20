@@ -1,0 +1,5 @@
+var ap = {
+    init: function(){
+        
+    },
+}
