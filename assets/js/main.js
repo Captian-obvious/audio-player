@@ -26,11 +26,13 @@ window.addEventListener('load',function(){
         analyser.minDecibels = -150;
         var l = analyser.frequencyBinCount;
         var array = new Uint8Array(l);
+        var ctx=canvas.getContext('2d')
         function frame() {
             analyser.getByteFrequencyData(array)
             if (pattern=='bars') {
                 var WIDTH = canvas.width;
                 var HEIGHT = canvas.height;
+                ctx.clearRect(0, 0, WIDTH, HEIGHT);
                 var barWidth = (WIDTH / l) * 2.5;
                 var barHeight;
                 var x = 0;
@@ -54,6 +56,7 @@ window.addEventListener('load',function(){
                 var centerY = canvas.height/2
                 var loud = getRMS(array)
                 let rad = (loud/255) * 5;
+                ctx.clearRect(0, 0, WIDTH, HEIGHT);
                 for (var i=0; i < l; i++) {
                     barHeight = (array[i]/255)* HEIGHT/3;
                     ctx.save();
@@ -75,6 +78,5 @@ window.addEventListener('load',function(){
                 ctx.closePath();
             }
             requestAnimationFrame(frame)
-            ctx.clearRect();
         }
 })
