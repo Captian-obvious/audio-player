@@ -75,5 +75,6 @@ window.addEventListener('load',function(){
                 ctx.closePath();
             }
             requestAnimationFrame(frame)
+            ctx.clearRect();
         }
 })
