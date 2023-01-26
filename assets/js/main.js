@@ -16,6 +16,8 @@ window.addEventListener("load", function () {
         var rms = intrms / maxrms;
         return rms * 255;
     }
+    var audio = new Audio()
+    
     var actx = new AudioContext();
     var src = actx.createMediaElementSource(audio);
     var analyser = actx.createAnalyser();
